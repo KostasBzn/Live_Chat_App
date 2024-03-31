@@ -5,13 +5,10 @@ import express from "express";
 const app = express();
 const server = http.createServer(app);
 
-const io = new Server(server, {
-  cors: {
-    origin: "https://live-chat-app-client-five.vercel.app",
-    methods: ["GET", "POST"],
-    credentials: true,
-  },
+const io = new Server({
+  cors: true,
 });
+
 let onlineUsers = [];
 
 io.on("connection", (socket) => {
