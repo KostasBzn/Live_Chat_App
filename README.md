@@ -3,11 +3,11 @@
 - **Features:**
 
   - Register - Login with email authentication / error handling
-  - Another feature
-  - Another feature
+  - Online-Offline users
+  - Live-timing messages
 
   Note: some notes here
 
 --My first Live Chat project using MongoDB and socket.IO--
 
-Click [here](https://full-stack-e-shop-client.vercel.app/) to visit the website
+Click [here](https://live-chat-app-client-five.vercel.app/) to visit the website
