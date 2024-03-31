@@ -238,7 +238,7 @@ const ChatPage = () => {
                 setNewMessage(e.target.value);
               }}
             ></textarea>
-            {!isLoading ? (
+            {isLoading ? (
               <button disabled className="send-button-loading">
                 <i className="fa-solid fa-hourglass-half"></i>
               </button>
