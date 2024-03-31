@@ -56,7 +56,9 @@ const LoginPage = () => {
                 Login
               </button>
             ) : (
-              <button disabled>Loading..</button>
+              <button disabled className="login-loading-button">
+                Signing in...
+              </button>
             )}
             <p className="login-register">
               You don't have an account?{" "}

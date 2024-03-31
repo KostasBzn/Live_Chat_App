@@ -71,6 +71,12 @@ body {
   cursor: pointer;
 }
 
+.login-loading-button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
 .login-button:hover {
   background-color: var(--blue);
 }
@@ -140,6 +146,12 @@ body {
   cursor: pointer;
 }
 
+.register-loading-button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
 .register-button:hover {
   background-color: var(--blue);
 }
@@ -204,6 +216,15 @@ body {
   border-radius: 5px;
   margin-left: 10px;
   cursor: pointer;
+}
+
+.send-button-loading {
+  background-color: grey;
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  margin-left: 10px;
 }
 
 .send-button:hover {
@@ -274,15 +295,15 @@ body {
 .chat-users-section {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  min-height: 100vh;
 }
 
 .chat-users,
 .all-users {
   flex: 1;
+  flex-basis: 50%;
   overflow-y: auto;
 }
-
 .chat-logout-button {
   margin-bottom: 20px;
   background-color: var(--light-green);

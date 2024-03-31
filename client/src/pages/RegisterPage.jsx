@@ -68,7 +68,9 @@ const RegisterPage = () => {
               Register
             </button>
           ) : (
-            <button disabled>Loading..</button>
+            <button disabled className="register-loading-button">
+              Loading..
+            </button>
           )}
           <p className="login-register">
             You already have an account?{" "}
