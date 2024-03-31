@@ -17,7 +17,7 @@ const corsOptions = {
   origin: clientURL,
   credentials: true,
 };
-
+//
 app.use(cors());
 
 connectDB();
