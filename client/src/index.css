@@ -161,8 +161,8 @@ body {
 .chat-container {
   display: flex;
   height: 100vh;
-  margin-top: 10px;
-  margin-right: 10px;
+  padding-top: 10px;
+  padding-right: 10px;
 }
 
 .user-list {
@@ -295,7 +295,7 @@ body {
 .chat-users-section {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  max-height: 100vh;
 }
 
 .chat-users,
