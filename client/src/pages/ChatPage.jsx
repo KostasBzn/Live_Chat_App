@@ -101,7 +101,7 @@ const ChatPage = () => {
   const handleNewChat = async (receiverId) => {
     try {
       // Check if the chat already exists
-      const existingChat = chatsForUser.find((chat) =>
+      const existingChat = chatsForUser?.find((chat) =>
         chat.participants.some((participant) => participant._id === receiverId)
       );
 
