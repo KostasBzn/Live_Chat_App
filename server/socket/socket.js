@@ -1,4 +1,9 @@
 import { Server } from "socket.io";
+import http from "http";
+import express from "express";
+
+const app = express();
+const server = http.createServer(app);
 
 const io = new Server({
   cors: true,
@@ -38,4 +43,4 @@ io.on("connection", (socket) => {
   });
 });
 
-io.listen(3000);
+export { io, app, server };

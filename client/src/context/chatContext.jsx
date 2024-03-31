@@ -15,11 +15,9 @@ const ChatProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [onlineUsers, setOnlineUsers] = useState([]);
 
-  const socketURL = import.meta.env.VITE_SOCKET_URL;
-
   //intial socket
   useEffect(() => {
-    const newSocket = io(socketURL);
+    const newSocket = io(baseURL);
     setSocket(newSocket);
 
     return () => {
