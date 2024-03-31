@@ -1,0 +1,294 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  width: 100%;
+  min-height: 100vh;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  background-color: var(--teal-green-dark);
+  color: var(--pearl-bush);
+}
+
+:root {
+  --blue: #34b7f1;
+  --teal-green: #128c7e;
+  --light-green: #25d366;
+  --teal-green-dark: #075e54;
+  --pearl-bush: #ece5dd;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-form-container {
+  background-color: var(--teal-green);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.login-title {
+  color: var(--pearl-bush);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-email,
+.login-password {
+  margin-bottom: 15px;
+}
+
+.login-email label,
+.login-password label {
+  color: var(--pearl-bush);
+}
+
+.login-email input,
+.login-password input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.login-button {
+  background-color: var(--light-green);
+  color: var(--pearl-bush);
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-button:hover {
+  background-color: var(--blue);
+}
+
+.login-register {
+  margin-top: 10px;
+  color: var(--pearl-bush);
+  text-align: center;
+}
+
+.register-link {
+  color: var(--pearl-bush);
+}
+
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.register-form-container {
+  background-color: var(--teal-green);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.register-title {
+  color: var(--pearl-bush);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.register-username,
+.register-email,
+.register-password {
+  margin-bottom: 15px;
+}
+
+.register-username label,
+.register-email label,
+.register-password label {
+  color: var(--pearl-bush);
+}
+
+.register-username input,
+.register-email input,
+.register-password input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.register-button {
+  background-color: var(--light-green);
+  color: var(--pearl-bush);
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.register-button:hover {
+  background-color: var(--blue);
+}
+
+/* chat page */
+
+.chat-container {
+  display: flex;
+  height: 100vh;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.user-list {
+  width: 200px;
+  background-color: var(--teal-green-dark);
+  color: var(--pearl-bush);
+  padding: 20px;
+  padding-top: 0;
+}
+
+.user-list-title {
+  border-bottom: 1px solid var(--pearl-bush);
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.chat-area {
+  flex: 4;
+  display: flex;
+  flex-direction: column;
+}
+
+.messages {
+  flex: 1;
+  background-color: var(--teal-green);
+  color: var(--pearl-bush);
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.input-area {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  background-color: var(--teal-green-dark);
+}
+
+.message-input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  resize: none;
+}
+
+.send-button {
+  background-color: var(--light-green);
+  color: var(--pearl-bush);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.send-button:hover {
+  background-color: var(--teal-green);
+}
+
+.chat-username {
+  cursor: pointer;
+  color: var(--pearl-bush);
+  padding: 5px;
+  list-style-type: none;
+}
+
+.chat-username.selected-user {
+  background-color: var(--teal-green);
+  border-radius: 5px;
+}
+
+.all-users-username {
+  cursor: pointer;
+  color: var(--pearl-bush);
+  padding: 5px;
+  list-style-type: none;
+}
+
+.all-users-username:hover {
+  background-color: var(--teal-green);
+  border-radius: 5px;
+}
+
+.welcome-message {
+  color: var(--teal-green-dark);
+  padding: 5px;
+  background-color: var(--light-green);
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+/* CSS for sent messages */
+.message.sent {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+.message.sent .message-text {
+  background-color: #007bff; /* Blue background for sent messages */
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+/* CSS for received messages */
+.message.received {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+}
+
+.message.received .message-text {
+  background-color: #f0f0f0; /* Light gray background for received messages */
+  color: black;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.chat-users-section {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.chat-users,
+.all-users {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.chat-logout-button {
+  margin-bottom: 20px;
+  background-color: var(--light-green);
+  color: var(--teal-green-dark);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
