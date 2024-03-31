@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { UserContext } from "../context/userContext";
 import { ChatContext } from "../context/chatContext";
 
@@ -20,6 +20,12 @@ const ChatPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [membersTalkedTo, setMembersTalkedTo] = useState();
   const [userSelected, setUserSelected] = useState(null);
+  const scrollToBottom = useRef();
+
+  //scroll down when we have new message
+  useEffect(() => {
+    scrollToBottom.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messagesForChat]);
 
   //first i get the chats for the logged user
   useEffect(() => {
@@ -214,9 +220,10 @@ const ChatPage = () => {
       {/* Chat Area */}
       <div className="chat-area">
         {/* Placeholder for rendering messages */}
-        <div className="messages">
+        <div className="messages" ref={scrollToBottom}>
           {messagesForChat?.map((message) => (
             <div
+              ref={scrollToBottom}
               className={`message ${
                 message?.sender._id === user?._id ? "sent" : "received"
               }`}
