@@ -25,19 +25,23 @@ const ChatProvider = ({ children }) => {
     };
   }, [user]);
 
-  //add online user
+  // Add the 'user' state variable to the dependency array
   useEffect(() => {
-    if (socket === null) return;
+    if (socket === null || !user) return;
 
-    socket.emit("addNewUser", user?._id);
+    // Emit the 'addNewUser' event with the user ID
+    socket.emit("addNewUser", user._id);
+
+    // Listen for 'getOnlineUsers' event and update the state
     socket.on("getOnlineUsers", (res) => {
       setOnlineUsers(res);
     });
 
+    // Clean up event listener when component unmounts
     return () => {
       socket.off("getOnlineUsers");
     };
-  }, [socket]);
+  }, [socket, user]); // Include 'user' in the dependency array
 
   //send message
   useEffect(() => {
