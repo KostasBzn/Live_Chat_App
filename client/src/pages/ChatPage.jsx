@@ -95,7 +95,7 @@ const ChatPage = () => {
   //fetch all the users
   useEffect(() => {
     fetchUsers();
-  }, []);
+  }, [user]);
 
   //create a chat with a new user
   const handleNewChat = async (receiverId) => {
