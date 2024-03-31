@@ -171,6 +171,8 @@ body {
   color: var(--pearl-bush);
   padding: 20px;
   padding-top: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .user-list-title {
@@ -291,11 +293,10 @@ body {
   padding: 10px;
   border-radius: 10px;
 }
-
 .chat-users-section {
   display: flex;
   flex-direction: column;
-  max-height: 100vh;
+  height: 100%;
 }
 
 .chat-users,

@@ -132,16 +132,18 @@ const ChatPage = () => {
     <div className="chat-container">
       {/* Existing chat list section */}
       <div className="user-list">
-        <button
-          className="chat-logout-button"
-          onClick={() => {
-            handleLogout();
-          }}
-        >
-          Logout
-        </button>
-        <div className="welcome-message">
-          <p>Welcome {user?.username}!</p>
+        <div>
+          <button
+            className="chat-logout-button"
+            onClick={() => {
+              handleLogout();
+            }}
+          >
+            Logout
+          </button>
+          <div className="welcome-message">
+            <p>Welcome {user?.username}</p>
+          </div>
         </div>
         <section className="chat-users-section">
           <div className="chat-users">
@@ -149,28 +151,29 @@ const ChatPage = () => {
             <div className="users-list-map">
               <ul>
                 {/* Render existing chats */}
-                {membersTalkedTo?.map((item) => {
-                  if (user?._id !== item._id) {
-                    return (
-                      <li
-                        className={`chat-username ${
-                          userSelected === item._id ? "selected-user" : ""
-                        }`}
-                        key={item._id}
-                        onClick={() => handleSelectedUser(item._id)}
-                      >
-                        {/* Render green dot if user is online, red dot if offline */}
-                        {isUserOnline(item._id) ? (
-                          <span style={{ color: "green" }}> ● </span>
-                        ) : (
-                          <span style={{ color: "red" }}> ● </span>
-                        )}{" "}
-                        {item.username}
-                      </li>
-                    );
-                  }
-                  return null; // Exclude the current user from rendering
-                })}
+                {user &&
+                  membersTalkedTo?.map((item) => {
+                    if (user?._id !== item._id) {
+                      return (
+                        <li
+                          className={`chat-username ${
+                            userSelected === item._id ? "selected-user" : ""
+                          }`}
+                          key={item._id}
+                          onClick={() => handleSelectedUser(item._id)}
+                        >
+                          {/* Render green dot if user is online, red dot if offline */}
+                          {isUserOnline(item._id) ? (
+                            <span style={{ color: "green" }}> ● </span>
+                          ) : (
+                            <span style={{ color: "red" }}> ● </span>
+                          )}{" "}
+                          {item.username}
+                        </li>
+                      );
+                    }
+                    return null; // Exclude the current user from rendering
+                  })}
               </ul>
             </div>
           </div>
@@ -181,26 +184,27 @@ const ChatPage = () => {
             <div className="users-list-map">
               <ul>
                 {/* Render all users */}
-                {allUsers?.map((item) => {
-                  if (user?._id !== item._id) {
-                    return (
-                      <li
-                        className="all-users-username"
-                        key={item._id}
-                        onClick={() => handleNewChat(item._id)}
-                      >
-                        {/* Render green dot if user is online, red dot if offline */}
-                        {isUserOnline(item._id) ? (
-                          <span style={{ color: "green" }}> ● </span>
-                        ) : (
-                          <span style={{ color: "red" }}> ● </span>
-                        )}
-                        {item.username}
-                      </li>
-                    );
-                  }
-                  return null; // Exclude the current user from rendering
-                })}
+                {user &&
+                  allUsers?.map((item) => {
+                    if (user?._id !== item._id) {
+                      return (
+                        <li
+                          className="all-users-username"
+                          key={item._id}
+                          onClick={() => handleNewChat(item._id)}
+                        >
+                          {/* Render green dot if user is online, red dot if offline */}
+                          {isUserOnline(item._id) ? (
+                            <span style={{ color: "green" }}> ● </span>
+                          ) : (
+                            <span style={{ color: "red" }}> ● </span>
+                          )}
+                          {item.username}
+                        </li>
+                      );
+                    }
+                    return null; // Exclude the current user from rendering
+                  })}
               </ul>
             </div>
           </div>
