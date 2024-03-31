@@ -6,7 +6,10 @@ const app = express();
 const server = http.createServer(app);
 
 const io = new Server({
-  cors: true,
+  cors: {
+    origin: clientURL,
+    methods: ["GET", "POST"],
+  },
 });
 
 let onlineUsers = [];
