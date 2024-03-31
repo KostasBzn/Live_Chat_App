@@ -30,7 +30,7 @@ const ChatProvider = ({ children }) => {
     if (socket === null || !user) return;
 
     // Emit the 'addNewUser' event with the user ID
-    socket.emit("addNewUser", user._id);
+    socket.emit("addNewUser", user?._id);
 
     // Listen for 'getOnlineUsers' event and update the state
     socket.on("getOnlineUsers", (res) => {
