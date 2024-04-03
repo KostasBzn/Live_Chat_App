@@ -1,14 +1,15 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { UserContext } from "../context/userContext";
 import { ChatContext } from "../context/chatContext";
+import AddChat from "../components/AddChat";
 
 const ChatPage = () => {
-  const { allUsers, fetchUsers, user, logoutUser } = useContext(UserContext);
+  const { user, logoutUser } = useContext(UserContext);
   const {
     chatsForUser,
     selectedChat,
     messagesForChat,
-    createNewChat,
+
     findChat,
     getUserChats,
     createNewMessage,
@@ -20,6 +21,7 @@ const ChatPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [membersTalkedTo, setMembersTalkedTo] = useState();
   const [userSelected, setUserSelected] = useState(null);
+  const [addChat, setAddChat] = useState(false);
   const scrollToBottom = useRef();
 
   //scroll down when we have new message
@@ -98,34 +100,6 @@ const ChatPage = () => {
     }
   };
 
-  //fetch all the users
-  useEffect(() => {
-    fetchUsers();
-  }, [user]);
-
-  //create a chat with a new user
-  const handleNewChat = async (receiverId) => {
-    try {
-      // Check if the chat already exists
-      const existingChat = chatsForUser?.find((chat) =>
-        chat.participants.some((participant) => participant._id === receiverId)
-      );
-
-      if (existingChat) {
-        // If the chat exists, set it as the selected chat
-        setUserSelected(receiverId);
-        setSelectedChat(existingChat);
-        // Fetch messages for the existing chat
-        getMessagesForChat(existingChat._id);
-      } else {
-        // If the chat doesn't exist, create a new chat
-        createNewChat(user?._id, receiverId);
-      }
-    } catch (error) {
-      console.error("Error crating new chat:", error);
-    }
-  };
-
   const handleLogout = () => {
     logoutUser();
   };
@@ -153,7 +127,7 @@ const ChatPage = () => {
         </div>
         <section className="chat-users-section">
           <div className="chat-users">
-            <h3 className="user-list-title">Existing Chats</h3>
+            <h3 className="user-list-title">Chats</h3>
             <div className="users-list-map">
               <ul>
                 {/* Render existing chats */}
@@ -185,34 +159,15 @@ const ChatPage = () => {
           </div>
 
           {/* New section for all users */}
-          <div className="all-users">
-            <h3 className="user-list-title">All Users</h3>
-            <div className="users-list-map">
-              <ul>
-                {/* Render all users */}
-                {user &&
-                  allUsers?.map((item) => {
-                    if (user?._id !== item._id) {
-                      return (
-                        <li
-                          className="all-users-username"
-                          key={item._id}
-                          onClick={() => handleNewChat(item._id)}
-                        >
-                          {/* Render green dot if user is online, red dot if offline */}
-                          {isUserOnline(item._id) ? (
-                            <span style={{ color: "green" }}> ● </span>
-                          ) : (
-                            <span style={{ color: "red" }}> ● </span>
-                          )}
-                          {item.username}
-                        </li>
-                      );
-                    }
-                    return null; // Exclude the current user from rendering
-                  })}
-              </ul>
-            </div>
+          <div className="new-chat-button-container">
+            <button
+              onClick={() => {
+                setAddChat(true);
+              }}
+              className="new-chat-button"
+            >
+              New Chat +
+            </button>
           </div>
         </section>
       </div>
@@ -257,6 +212,13 @@ const ChatPage = () => {
           </form>
         </div>
       </div>
+      {addChat && (
+        <AddChat
+          setAddChat={setAddChat}
+          membersTalkedTo={membersTalkedTo}
+          handleSelectedUser={handleSelectedUser}
+        />
+      )}
     </div>
   );
 };

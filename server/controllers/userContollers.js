@@ -79,20 +79,17 @@ export const findUser = async (req, res) => {
   }
 };
 
-//find all users
-export const findAllUsers = async (req, res) => {
+//find by username
+export const findByUsername = async (req, res) => {
+  const username = req.params.username;
   try {
-    const users = await User.find();
-
-    if (users.length === 0) {
-      return res
-        .status(404)
-        .send({ success: false, message: "No users found" });
-    }
+    const users = await User.find({
+      username: { $regex: new RegExp(username, "i") },
+    });
 
     res.status(200).send({ success: true, users });
   } catch (error) {
-    console.error("Error finding all the users", error.message);
+    console.error("Error finding users by username:", error.message);
     res.status(500).send({ success: false, error: error.message });
   }
 };
