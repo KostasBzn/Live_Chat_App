@@ -6,7 +6,7 @@
   - Online-Offline users
   - Live-timing messages
 
-  Note: some notes here
+  Note: For this project i used socke.io and mongoDB database
 
 --My first Live Chat project using MongoDB and socket.IO--
 
