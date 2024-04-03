@@ -7,7 +7,7 @@ export const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [allUsers, setAllUsers] = useState(null);
+  const [usersResultByUsername, setUsersResultByUsername] = useState(null);
   const [selectedUser, setSelectedUser] = useState(null);
 
   const navigate = useNavigate();
@@ -75,15 +75,21 @@ const UserProvider = ({ children }) => {
     loggedUser();
   }, []);
 
-  //get all users
-  const fetchUsers = async () => {
+  //get by username
+  const findByUsername = async (username) => {
     try {
-      const response = await axios.get(baseURL + `/users/api/users/all`);
+      const response = await axios.get(baseURL + `/users/find/${username}`);
       if (response.data.success) {
-        setAllUsers(response.data.users);
+        const filteredUsers = response.data.users.filter(
+          (item) => item._id !== user._id
+        );
+        setUsersResultByUsername(filteredUsers);
+
+        console.log("users by username", filteredUsers);
       }
     } catch (error) {
-      console.error("Failed to fetch users:", error);
+      console.error("Failed to find users by username:", error);
+      setUsersResultByUsername([]);
     }
   };
 
@@ -109,11 +115,12 @@ const UserProvider = ({ children }) => {
     <UserContext.Provider
       value={{
         user,
-        allUsers,
+        usersResultByUsername,
+        setUsersResultByUsername,
         selectedUser,
         loginUser,
         registerUser,
-        fetchUsers,
+        findByUsername,
         logoutUser,
         findUser,
       }}

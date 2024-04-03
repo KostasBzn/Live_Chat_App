@@ -1,7 +1,7 @@
 import express from "express";
 import auth from "../middlewares/user-auth.js";
 import {
-  findAllUsers,
+  findByUsername,
   findUser,
   loggedUser,
   loginUser,
@@ -14,6 +14,6 @@ userRoutes.post("/api/auth/register", registerUser);
 userRoutes.post("/api/auth/login", loginUser);
 userRoutes.get("/api/auth/me", auth, loggedUser);
 userRoutes.get("/api/user/:userId", findUser);
-userRoutes.get("/api/users/all", findAllUsers);
+userRoutes.get("/find/:username", findByUsername);
 
 export default userRoutes;
