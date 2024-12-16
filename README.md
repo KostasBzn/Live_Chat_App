@@ -12,6 +12,6 @@ Click [here](https://live-chat-app-client-five.vercel.app/) to open the chat app
 
 ## 🛠 **Technologies Used**
 - **Backend**: Socket.IO, MongoDB
-- **Frontend**: HTML, CSS, JavaScript
+- **Frontend**: HTML, CSS, React
 
 *This project was my first implementation of a live chat app using Socket.IO and MongoDB.*
